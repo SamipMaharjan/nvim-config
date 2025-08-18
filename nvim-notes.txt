@@ -1,0 +1,10 @@
+:help ins-completion ---- [Insert Completion guidelines for auto completion in insert mode]
+    {
+    
+}
+:help lsp
+:lsp vim.lsp.buf.format()
+
+relearn updating variable name all the way up the chain
+
+:checkhealth telescope
