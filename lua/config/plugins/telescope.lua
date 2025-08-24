@@ -8,8 +8,11 @@ return {
   },
   config = function()
     require('telescope').setup {
+      defaults = {
+        file_ignore_patterns = { ".git/", "node_modules/", "dist/" }
+      },
       pickers = {
-        find_files = { theme = 'ivy', hidden = true, no_ignore = false }
+        find_files = { theme = 'ivy', hidden = true, no_ignore = true }
         -- live_grep  = {}
       }
       ,

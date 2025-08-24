@@ -10,6 +10,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.keymap.set("n", "<space><space>x", "<cmd>source %<CR>")
+vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
 
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
@@ -28,9 +29,10 @@ vim.keymap.set("n", "<space>st", function()
     vim.cmd.wincmd("J")
     vim.api.nvim_win_set_height(0, 15)
 end)
-local verycoollaksdfj = 5
-print(verycoollaksdfj)
 
+for i = 1, 9 do
+    vim.keymap.set('n', '<M-' .. i .. '>', '<cmd>tabn ' .. i .. '<CR>')
+end
 --if true then
 --  print "much better"
 --end
