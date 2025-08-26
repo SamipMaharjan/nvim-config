@@ -17,9 +17,30 @@ return {
     },
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local lspconfig = require("lspconfig")
 
-      require("lspconfig").lua_ls.setup { capabilities = capabilities }
-      require("lspconfig").ts_ls.setup { capabilities = capabilities }
+      lspconfig.lua_ls.setup { capabilities = capabilities }
+      lspconfig.ts_ls.setup { capabilities = capabilities
+      , settings = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+          }
+        }
+      },
+
+        -- Important: ensure proper root directory detection
+        root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', '.git'),
+
+
+      }
+
+      -- GOTO Definitions
+      vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
       vim.api.nvim_create_autocmd('lspattach', {
         callback = function(args)
