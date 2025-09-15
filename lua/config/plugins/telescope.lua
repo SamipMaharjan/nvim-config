@@ -30,7 +30,7 @@ return {
     --     end
     --   })
     -- end, { noremap = true, silent = true })
-
+    vim.keymap.set("n", "<space>fo", require('telescope.builtin').oldfiles)
     vim.keymap.set("n", "<space>fh", require('telescope.builtin').help_tags)
     vim.keymap.set("n", "<space>ff", require('telescope.builtin').find_files)
     vim.keymap.set("n", "<space>en", function()
