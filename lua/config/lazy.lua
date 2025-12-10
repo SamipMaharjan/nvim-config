@@ -16,6 +16,10 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- For Autocompletion
+vim.keymap.set("i", "<C-Space>", function()
+  require("blink.cmp").show()
+end, { silent = true, noremap = true })
 require("lazy").setup({
   spec = {
     {

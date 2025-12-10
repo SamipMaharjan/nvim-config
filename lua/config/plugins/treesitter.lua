@@ -42,6 +42,9 @@ return {
           -- true for ruby::     Instead of true it can also be a list of languages
           additional_vim_regex_highlighting = false,
         },
+        fold = {
+          enable = true,
+        }
       }
     end
   }
