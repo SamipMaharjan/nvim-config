@@ -20,22 +20,36 @@ return {
       local lspconfig = require("lspconfig")
 
       lspconfig.lua_ls.setup { capabilities = capabilities }
-      lspconfig.ts_ls.setup { capabilities = capabilities
-      , settings = {
-        typescript = {
-          inlayHints = {
-            includeInlayParameterNameHints = 'all',
-            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-            includeInlayFunctionParameterTypeHints = true,
-            includeInlayVariableTypeHints = true,
+      lspconfig.ts_ls.setup {
+        capabilities = capabilities,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+            }
           }
-        }
-      },
+        },
 
         -- Important: ensure proper root directory detection
         root_dir = lspconfig.util.root_pattern('package.json', 'tsconfig.json', '.git'),
 
 
+      }
+      lspconfig.rust_analyzer.setup {
+        capabilities = capabilities,
+        cmd = {
+          'rustup', "run", "stable", "rust-analyzer"
+        }
+        -- on_attach = on_attach
+        -- settings = {
+        --   ["rust-analyzer"] = {
+        --     cargo = { allFeatures = true },
+        --     checkOnSave = { command = "clippy" },
+        --   }
+        -- }
       }
 
       -- GOTO Definitions
@@ -64,4 +78,5 @@ return {
 
       --:  vim.list_contains
     end
-  } }
+  }
+}
