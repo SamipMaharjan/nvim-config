@@ -38,18 +38,29 @@ return {
 
 
       }
+      -- lspconfig.rust_analyzer.setup {
+      --   capabilities = capabilities,
+      --   cmd = {
+      --     'rustup', "run", "stable", "rust-analyzer"
+      --   }
+      --   -- on_attach = on_attach
+      --   -- settings = {
+      --   --   ["rust-analyzer"] = {
+      --   --     cargo = { allFeatures = true },
+      --   --     checkOnSave = { command = "clippy" },
+      --   --   }
+      --   -- }
+      -- }
+
       lspconfig.rust_analyzer.setup {
         capabilities = capabilities,
-        cmd = {
-          'rustup', "run", "stable", "rust-analyzer"
-        }
-        -- on_attach = on_attach
-        -- settings = {
-        --   ["rust-analyzer"] = {
-        --     cargo = { allFeatures = true },
-        --     checkOnSave = { command = "clippy" },
-        --   }
-        -- }
+        root_dir = lspconfig.util.root_pattern("Cargo.toml", ".git"),
+        settings = {
+          ["rust-analyzer"] = {
+            diagnostics = { enable = true },
+            checkOnSave = { command = "clippy" },
+          },
+        },
       }
 
       -- GOTO Definitions
