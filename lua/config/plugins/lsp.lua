@@ -63,6 +63,47 @@ return {
         },
       }
 
+      lspconfig.tailwindcss.setup {
+        capabilities = capabilities,
+
+        root_dir = lspconfig.util.root_pattern(
+          "tailwind.config.js",
+          "tailwind.config.cjs",
+          "tailwind.config.ts",
+          "postcss.config.js",
+          "package.json",
+          ".git"
+        ),
+
+        filetypes = {
+          "html",
+          "css",
+          "scss",
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "svelte",
+          "vue",
+          "astro",
+        },
+
+        settings = {
+          tailwindCSS = {
+            classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+            lint = {
+              cssConflict = "warning",
+              invalidApply = "error",
+              invalidConfigPath = "error",
+              invalidScreen = "error",
+              invalidTailwindDirective = "error",
+              invalidVariant = "error",
+              recommendedVariantOrder = "warning",
+            },
+            validate = true,
+          },
+        },
+      }
       -- GOTO Definitions
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })

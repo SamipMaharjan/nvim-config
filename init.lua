@@ -17,9 +17,9 @@ vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
 vim.keymap.set("n", "<M-c>", "<cmd>cclose<CR>")
 
 vim.diagnostic.config({
-  virtual_text = true,   -- Show error text inline
-  signs = true,          -- Show error signs in gutter
-  underline = true,      -- Show underlines
+  virtual_text = true, -- Show error text inline
+  signs = true,        -- Show error signs in gutter
+  underline = true,    -- Show underlines
   update_in_insert = false,
   severity_sort = true,
   float = {
@@ -33,10 +33,12 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>qq', ":tabclose<CR>")
+vim.keymap.set('n', '<leader>qu', ":tabclose<CR>")
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>ho", ":noh<CR>")
+vim.keymap.set("n", "<leader>wr", ":w<CR>")
 
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
