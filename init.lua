@@ -33,12 +33,15 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>qu', ":tabclose<CR>")
+vim.keymap.set('n', '<leader>qu', ":q<CR>")
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>ho", ":noh<CR>")
+vim.keymap.set('n', '<leader>qa', ":qa<CR>")
 vim.keymap.set("n", "<leader>wr", ":w<CR>")
+vim.keymap.set("n", "<leader>wa", ":wa<CR>")
+vim.keymap.set("n", "<leader>wq", ":wq<CR>")
 
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
@@ -47,13 +50,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
     vim.opt.relativenumber = false
   end,
 })
-
--- vim.keymap.set("n", "<space>st", function()
---     vim.cmd.vnew()
---     vim.cmd.term()
---     vim.cmd.wincmd("J")
---     vim.api.nvim_win_set_height(0, 15)
--- end)
 
 -- FOR ALT 1-0 TAB SWITCHING
 for i = 1, 9 do
