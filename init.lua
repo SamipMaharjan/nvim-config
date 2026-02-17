@@ -1,65 +1,15 @@
 vim.g.mapleader = " "
+
 require("config.lazy")
-
--- Vim options
-vim.opt.shiftwidth = 4
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.splitright = true
-vim.opt.clipboard = "unnamedplus"
+require("config.keymaps")
+require("config.options")
+require("config.diagnoistics")
 
 
--- QuickFix Keymaps
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
-vim.keymap.set("n", "<M-c>", "<cmd>cclose<CR>")
-
-vim.diagnostic.config({
-  virtual_text = true, -- Show error text inline
-  signs = true,        -- Show error signs in gutter
-  underline = true,    -- Show underlines
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = true,
-    header = "",
-    prefix = "",
-  },
-})
-
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>qu', ":q<CR>")
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
-vim.keymap.set({ "n", "v" }, "<leader>y", "\"+y")
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
-vim.keymap.set("n", "<leader>ho", ":noh<CR>")
-vim.keymap.set('n', '<leader>qa', ":qa<CR>")
-vim.keymap.set("n", "<leader>wr", ":w<CR>")
-vim.keymap.set("n", "<leader>wa", ":wa<CR>")
-vim.keymap.set("n", "<leader>wq", ":wq<CR>")
-
-vim.api.nvim_create_autocmd('TermOpen', {
-  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
-
--- FOR ALT 1-0 TAB SWITCHING
-for i = 1, 9 do
-  vim.keymap.set('n', '<M-' .. i .. '>', '<cmd>tabn ' .. i .. '<CR>')
-end
-
-
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldlevel = 99
-vim.opt.foldenable = true -- Keeps folds off by default (so files don't load folded)
--- vim.opt.foldmethod = "marker"
+-- vim.api.nvim_create_autocmd('TermOpen', {
+--   group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+--   callback = function()
+--     vim.opt.number = true
+--     vim.opt.relativenumber = false
+--   end,
+-- })
