@@ -1,0 +1,7 @@
+-- return {
+--   {
+--     "prettier/vim-prettier",
+--     run = "npm install",
+--     ft = { "javascript", "typescript", "css", "json", "html", "markdown" }
+--   }
+-- }

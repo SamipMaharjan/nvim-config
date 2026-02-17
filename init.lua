@@ -4,6 +4,7 @@ require("config.lazy")
 require("config.keymaps")
 require("config.options")
 require("config.diagnoistics")
+require("config.autocmds")
 
 
 -- vim.api.nvim_create_autocmd('TermOpen', {
